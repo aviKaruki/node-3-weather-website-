@@ -11,7 +11,7 @@ const weather = (location) => {
     messageTwo.textContent = ""
     messageThree.textContent = ""
 
-    fetch("http://localhost:3000/weather?address=" + encodeURIComponent(location)).then((response) => {
+    fetch("/weather?address=" + encodeURIComponent(location)).then((response) => {
     response.json().then((data) => {
         if (data.error) {
             console.log(data.error);
