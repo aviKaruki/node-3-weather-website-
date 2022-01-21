@@ -37,8 +37,8 @@ const weather = (location) => {
         }
         else {
             messageOne.textContent  = "Location   : " + data[1].location;
-            messageFour.textContent = "Sunrise    : " + data[0].sunrise;
-            messageFive.textContent = "Sunset     : " + data[0].sunset;
+            messageFour.textContent = "Sunrise    : " + timeConverter(data[0].sunrise);
+            messageFive.textContent = "Sunset     : " + timeConverter(data[0].sunset);
             messageTwo.textContent = "Temperature : " + data[0].Temperature;
             messageThree.textContent = "Weather   : " + data[0].weather;
             messageSix.textContent = "UVI         : " + data[0].uvi;
