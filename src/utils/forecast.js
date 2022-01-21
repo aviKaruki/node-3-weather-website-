@@ -21,6 +21,8 @@ const forecast = (latitude, longitude, callback) => {
         } else if (response.body.error) {
             callback("No results found", undefined);
         } else {
+            sunrise =  timeConverter(response.body.current.sunrise);
+            sunset =  timeConverter(response.body.current.sunset);
             callback(undefined, {
                 temperature: response.body.current.temp,
                 Weather : response.body.current.weather[0].main,
