@@ -66,7 +66,11 @@ app.get("/weather", (req, res) => {
                 data = {
                     Temperature : forecastData.temperature,
                     weather     : forecastData.Weather,
-                    Description : forecastData.Description
+                    Description : forecastData.Description,
+                    Rain        : forecastData.Percipitaion,
+                    sunset      : forecastData.sunset,
+                    sunrise     : forecastData.sunrise,
+                    uvi         : forecastData.uvi
                 },
                 location = {
                     location,

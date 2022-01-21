@@ -3,6 +3,9 @@ const search = document.querySelector("input");
 const messageOne = document.querySelector("#alt");
 const messageTwo = document.querySelector("#Temperature");
 const messageThree = document.querySelector("#Weather");
+const messageFour = document.querySelector("#sunrise");
+const messageFive = document.querySelector("#sunset");
+const messageSix = document.querySelector("#uvi");
 
 
 const weather = (location) => {
@@ -10,6 +13,9 @@ const weather = (location) => {
     messageOne.textContent = "Loading"
     messageTwo.textContent = ""
     messageThree.textContent = ""
+    messageFour.textContent = ""
+    messageFive.textContent = ""
+    messageSix.textContent = ""
 
     fetch("/weather?address=" + encodeURIComponent(location)).then((response) => {
     response.json().then((data) => {
@@ -18,11 +24,12 @@ const weather = (location) => {
             messageOne.textContent = data.error;
         }
         else {
-            messageOne.textContent = data[1].location;
-            messageTwo.textContent = data[0].Temperature;
-            messageThree.textContent = data[0].weather;
-            console.log(data[0].Temperature);
-            console.log(data[1].location);
+            messageOne.textContent  = "Location   : " + data[1].location;
+            messageFour.textContent = "Sunrise    : " + data[0].sunrise;
+            messageFive.textContent = "Sunset     : " + data[0].sunset;
+            messageTwo.textContent = "Temperature : " + data[0].Temperature;
+            messageThree.textContent = "Weather   : " + data[0].weather;
+            messageSix.textContent = "UVI         : " + data[0].uvi;
         }
     });
 });
