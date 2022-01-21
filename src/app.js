@@ -12,18 +12,6 @@ const publicDirPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../templates/views");
 const partialsPath = path.join(__dirname, "../templates/partials"); 
 
-const timeConverter = (UNIX_timestamp) => {
-    var a = new Date(UNIX_timestamp * 1000);
-    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    var year = a.getFullYear();
-    var month = months[a.getMonth()];
-    var date = a.getDate();
-    var hour = a.getHours();
-    var min = a.getMinutes();
-    var sec = a.getSeconds();
-    var orig = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-    return orig;
-  }
 
 // Setup handlebars engine and views location
 app.set("view engine", "hbs");
@@ -83,8 +71,8 @@ app.get("/weather", (req, res) => {
                     weather     : forecastData.Weather,
                     Description : forecastData.Description,
                     Rain        : forecastData.Percipitaion,
-                    sunset      : sun2,
-                    sunrise     : sun1,
+                    sunset      : forecastData.sunset,
+                    sunrise     : forecastData.sunrise,
                     uvi         : forecastData.uvi
                 },
                 location = {
